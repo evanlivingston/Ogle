@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src="jquery.js"></script>
+        <style>
+            body {
+                min-width: 357px;
+                overflow-x: scroll;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            }
+
+            img {
+                margin: 5px;
+                border: 2px solid black;
+                vertical-align: middle;
+                width: 75px;
+                height: 75px;
+            }
+            #tip {
+                position: absolute;
+                width: auto;
+                height: auto;
+                line-height: 20px;
+                padding: 10px;
+                font-size: 10px;
+                text-align: left;
+                color: rgb(238, 238, 238);
+                background: rgba(10, 10, 10, 0.8);
+                border: 4px solid rgba(10, 10, 10, 0.4);
+                border-radius: 5px;
+                text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+                box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0px;
+            }
+
+            #tip:after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-width: 10px;
+                border-style: solid;
+                border-color: transparent rgba(10,10,10,.4) transparent transparent;
+                top: 2px;
+                left: -24px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="tip">Tip</div>
+    </body>
+
+    <script src="popup.js"></script>
+
+</html>

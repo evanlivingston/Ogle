@@ -80,6 +80,7 @@ function check_image(imageObj) {
             imageObj['last_seen'] = (new Date()).getTime();
             imageObj['recent_time_seen'] = imageObj['last_seen'] - imageObj['first_seen'];
             imageObj['total_time_seen'] = imageObj['total_time_seen'] + imageObj['recent_time_seen'];
+            imageObj['first_seen'] = (new Date()).getTime();
         }
 
     // if element is not visible

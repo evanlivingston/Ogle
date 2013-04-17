@@ -15,7 +15,7 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "options_page" : "options.html",
+  "options_page" : "popup.html",
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*" ],
