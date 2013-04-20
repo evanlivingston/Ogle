@@ -2,21 +2,82 @@
     <head>
         <title>Options</title>
         <script src="jquery.js"></script>
+        <style>
+            body {
+                font-family: ProximaNova, Helvetica, Arial, "Lucida Grande", sans-serif;
+                background-color: #f0f0f0;
+                font-size: 14px;
+            }
+            a {
+                color: #383838;
+                text-decoration: none;
+            }
+            #content {
+                width: 650px;
+                margin: 0px auto;
+                padding: 20px;
+                color: #383838;
+            }
+            #header, h2 {
+                height: 50px;
+                margin-bottom: 25px;
+                text-align: center;
+                color: #555;
+                font-weight: lighter;
+            }
+            #content-inner-container {
+                background-color: #fff;
+                border: 1px solid #cacaca;
+                padding: 30px 46px;
+
+                box-shadow: 0px 1px 0px #fff;
+                -webkit-box-shadow: 0px 1px 0px #fff;
+                -mozbox-shadow: 0px 1px 0px #fff;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -border-radius: 5px;
+            }
+            #option-wrapper {
+                overflow: hidden;
+                height: 30px;
+                position: relative;
+            }
+            label {
+                position: relative;
+                top: 2px;
+                display: inline-block;
+            }
+            button {
+                position: relative;
+                right: 0px;
+                right: 0px;
+            }
+
+            #footer {
+                text-align: center;
+                color: #777777;
+                font-size: 12px;
+                margin-bottom: 40px;
+                font-weight: 300;
+            }
+        </style>
     </head>
 
     <body>
 
-        Clear Cache
-        </br>
-        <button id="clear">Clear</button>
-        </br>
-        </br>
-        </br>
-        Dump Storage
-        </br>
-        <button id="dump">Dump Storage</button>
-        </br>
-        <div id="status"></div>
+        <div id="content">
+            <div id="header"><h2>ImageWatcher Options</h2></div>
+            <div id="content-inner-container">
+                <div class="option-wrapper">
+                    <label for="clear"><h4>Reset all data.</h4></label>
+                    <button id="clear">Clear</button>
+                </div>
+                <div id="status"></div>
+            </div>
+        </div>
+        <div id="footer">
+            <a href="http://www.evan-livingston.com">evan-livingston.com</a>
+        </div>
     </body>
 
     <script src="options.js"></script>

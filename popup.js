@@ -44,11 +44,11 @@ function msToStr (milliseconds) {
     return 'less then a second'; //'just now' //or other string you like;
 }
 
-function update_tip(image) {
-    html = image.src + '</br>';
-    html += (msToStr(image.getAttribute('time')));
+function update_info(image) {
+    html = "<div id='src'>" + image.src + "</div>";
+    html += "<div id='time'>" +(msToStr(image.getAttribute('time'))) + "</div>";
 
-    $("#tip").html(html);
+    $(".info").html(html);
 }
 
 function get_all(callback) {
@@ -74,29 +74,28 @@ window.onload = function () {
             images.push(data_object[image]);
         };
         images.sort(compare).reverse();
-        console.log(images);
-        for (var i=0; i<5; i++) {
+        
+        $('#time').append(images.length + ' images seen so far.');
+        //console.log(images);
+        for (var i=0; i<80; i++) {
             var img = document.createElement('img');
-            img.src = images[i].src;
-            img.setAttribute('alt', images[i].src);
-            img.setAttribute('time', images[i].total_time_seen);
-            img.className = 'top-image';
-            document.body.appendChild(img);
+            if (images[i]) {
+                img.src = images[i].src;
+                img.setAttribute('alt', images[i].src);
+                img.setAttribute('time', images[i].total_time_seen);
+                img.className = 'top-image';
+                $('#imgs').append(img);
+            }
         }
 
         $('.top-image').hover(
             function (e) {
                 if(!$(e.relatedTarget).hasClass('top-image')) {
-                    console.log('entering');
-                    console.log(this);
-                    update_tip(this);
-                    $("#tip").show(); 
+                    update_info(this);
                 }
             },
             function (e) {
                 if(!$(e.relatedTarget).hasClass('top-image')) {
-                    console.log('leaving');
-                    $("#tip").hide(); 
                 }
             }
         );

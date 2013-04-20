@@ -1,7 +1,7 @@
 {
   "name": "ImageWatcher",
   "version": "1.0",
-  "description": "Violating your privacy.",
+  "description": "Violatin' your privacy.",
   "permissions": 
     [
           "webRequest"
@@ -15,7 +15,7 @@
   "background": {
     "scripts": ["background.js"]
   },
-  "options_page" : "popup.html",
+  "options_page" : "options.html",
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*" ],
