@@ -3,6 +3,7 @@
 
 var images = [];
 var focused = true;
+var last_action = (new Date()).getTime();
 
 // Function to get all images on the page
 function img_find() {
@@ -97,6 +98,22 @@ function check_image(imageObj) {
     return imageObj;
 }
 
+function user_action(e) {
+    last_action = (new Date()).getTime();
+    focused = true;
+    //console.log(e);
+}
+
+function tab_is_active() {
+    now = (new Date()).getTime();
+    if (now - last_action < 10000 && focused) {
+        return true;
+    } else {
+        return false
+    }
+}
+
+
 window.onscroll = function (oEvent) {
     for (var key in images) {
         images[key] = check_image(images[key]);
@@ -106,33 +123,37 @@ window.onscroll = function (oEvent) {
 
 // Initialize everything here
 window.onload = function () { 
+    //$(document).bind("click keydown keyup mousemove", user_action);
+
     images = img_find();
     for (var key in images) {
         images[key] = init_image(images[key]);
         safe_key = encodeURIComponent(images[key].src).replace(/\./g, "").replace(/%/g, "");
         get_item(safe_key, function(used_key, x) {
-            console.log('======');
             images[used_key].total_time_seen = images[used_key].total_time_seen + x[used_key].total_time_seen;
-            console.log('total time seen for ' + used_key + ' = ' + images[used_key]['total_time_seen']);
         });
     }
     // Loop to save data
     setInterval(function(){
-        for (var key in images) {
-            images[key] = check_image(images[key]);
+        if (tab_is_active()) {
+            for (var key in images) {
+                images[key] = check_image(images[key]);
 
-            var dataObj = {};
-            safe_key = encodeURIComponent(images[key].src).replace(/\./g, "").replace(/%/g, "");
-            dataObj[safe_key] = images[key];
-            chrome.storage.local.set(dataObj, function() {
-            });
+                var dataObj = {};
+                safe_key = encodeURIComponent(images[key].src).replace(/\./g, "").replace(/%/g, "");
+                dataObj[safe_key] = images[key];
+                chrome.storage.local.set(dataObj, function() {
+                });
+            }
         }
     },1000);
 }
 
-window.addEventListener('focus', function() {
-    focused = true;
-});
+window.addEventListener('focus', user_action);
+window.addEventListener('mousemove', user_action);
+window.addEventListener('click', user_action);
+window.addEventListener('keyup', user_action);
+window.addEventListener('keydown', user_action);
 
 window.addEventListener('blur', function() {
     focused = false;
