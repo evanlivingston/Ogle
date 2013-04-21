@@ -1,7 +1,7 @@
 {
   "name": "Ogle",
-  "version": "1.0",
-  "description": "Violatin' your privacy.",
+  "version": "1.2",
+  "description": "Ogle aims to help the average Internet user better understand their browsing experience",
   "permissions": 
     [
           "webRequest"
