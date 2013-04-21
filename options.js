@@ -3,7 +3,7 @@
 function clear_cache() {
     chrome.storage.local.clear();
     var status = document.getElementById("status");
-    status.innerHTML = "Everythin Cleared";
+    status.innerHTML = "Everything Cleared";
 }
 
 function dump_storage() {
